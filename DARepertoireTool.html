@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dinosaur Annex Repertoire Tool</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  </head>
+  <body>
+  
+  	<table id="results"><tr><th>Composer</th><th>Title</th><th>Venue</th><th>Date</th><th>Soloist</th><th>Guest Conductor</th><th>Premiere</th><th>Commission</th><th>Special Funding</th></tr>
+  	
+  	</table>
+  	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+		
+						$.getJSON( "mysqljsonMR.php" , function(data) {
+					
+							$.each(data, function(i, p){
+								$("#results").append("<tr><td>" + p.composer + "</td>" 
+													   + "<td>" + p.title    + "</td>" 
+													   + "<td>" + p.venue    + "</td>" 
+													   + "<td>" + p.date    + "</td>" 
+													   + "<td>" + p.soloist    + "</td>" 
+													   + "<td>" + p.guest_conductor    + "</td>" 
+													   + "<td>" + p.premiere    + "</td>" 
+													   + "<td>" + p.commission    + "</td>" 
+													   + "<td>" + p.special_funding    + "</td>" 
+													   + "</tr>");
+							});
+						
+						})
+						.fail(function() {
+								console.log( "getJSON error" );
+						});
+			});
+    </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

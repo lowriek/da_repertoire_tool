@@ -2,7 +2,7 @@
 	
 	$dbc = @mysqli_connect("localhost", "root", "root", "da_rep")
 	       or die("Could not open wfb2007 db, " . mysqli_connect_error());
-	$query = "select composer, title from da_performances";				
+	$query = "select * from da_performances";				
 
 	$result = mysqli_query($dbc, $query);
 	if ( mysqli_num_rows( $result ) == 0 ) {
